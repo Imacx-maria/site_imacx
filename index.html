@@ -1432,8 +1432,8 @@ a {
           </div>
         </div>
         <!-- Scroll Down Arrow - Common to all panels -->
-        <div class="hero-scroll-arrow">
-          <dotlottie-wc src="https://lottie.host/1679f75c-dda7-401f-bdbc-4cd388235302/QORYHhRAVr.lottie" autoplay loop style="width: 60px; height: 60px;"></dotlottie-wc>
+        <div class="hero-scroll-arrow" style="z-index: 999; position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); pointer-events: none;">
+          <dotlottie-wc src="https://lottie.host/1679f75c-dda7-401f-bdbc-4cd388235302/QORYHhRAVr.lottie" autoplay loop style="width: 60px; height: 60px; display: block;"></dotlottie-wc>
         </div>
       </div>
       <section id="otherID" data-w-id="d15cff1e-2568-7287-9094-205369b7db55" class="home-cta_section">
@@ -2158,6 +2158,20 @@ a {
 .is-outline.is-dark {
   -webkit-text-stroke: 1px #2b2c28;
   color: transparent;
+}
+
+/* Fix horizontal scroll and ensure Lottie animation is visible */
+body, html {
+  overflow-x: hidden;
+}
+
+dotlottie-wc {
+  display: block !important;
+  z-index: 999 !important;
+}
+
+.hero-scroll-arrow {
+  z-index: 999 !important;
 }
 </style>
   </div>
