@@ -2220,6 +2220,25 @@ const trigger = ScrollTrigger.create({
   pin: true,
   onReverseComplete: () => tlpanel.reversed() ? tlpanel.play() : tlpanel.reverse()
 });
+
+// Lottie Arrow Fade Animation
+const firstSectionArrow = document.querySelector(".home-hero_section:first-child .hero-scroll-arrow");
+if (firstSectionArrow) {
+  ScrollTrigger.create({
+    trigger: ".home-hero_section.panel-2",
+    start: "left center",
+    end: "center center",
+    scrub: true,
+    onUpdate: (self) => {
+      // Fade out the arrow as panel-2 slides in from the left
+      gsap.to(firstSectionArrow, {
+        opacity: 1 - self.progress,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    }
+  });
+}
 [...document.querySelectorAll(".home-hero-img-wrap")].forEach((item, index) => {
   const rotation = (index % 2 === 0 ? 15 : -20);
   ScrollTrigger.create({
