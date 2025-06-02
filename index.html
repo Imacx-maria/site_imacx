@@ -1431,8 +1431,8 @@ a {
             </div>
           </div>
         </div>
-        <!-- Scroll Down Arrow - Only visible when scrolling between panels -->
-        <div class="hero-scroll-arrow" style="z-index: 10000; position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); pointer-events: none; opacity: 0; transition: opacity 0.3s ease;">
+        <!-- Scroll Down Arrow - Always visible in hero-sliding-panels -->
+        <div class="hero-scroll-arrow" style="z-index: 10000; position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); pointer-events: none;">
           <dotlottie-wc src="https://lottie.host/1679f75c-dda7-401f-bdbc-4cd388235302/QORYHhRAVr.lottie" autoplay loop style="width: 300px; height: 300px; display: block;"></dotlottie-wc>
         </div>
       </div>
@@ -2172,13 +2172,11 @@ dotlottie-wc {
 
 .hero-scroll-arrow {
   z-index: 10000 !important;
-  position: fixed !important;
+  position: absolute !important;
   bottom: 2rem !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   pointer-events: none !important;
-  opacity: 0 !important;
-  transition: opacity 0.3s ease !important;
 }
 
 /* Ensure hero-sliding-panels contains the arrow correctly */
@@ -2224,42 +2222,6 @@ const trigger = ScrollTrigger.create({
   });
 });
 document.querySelectorAll('[data-visibility="hidden"]').forEach((item) => item.style.visibility = "visible");
-
-// Show/hide Lottie arrow only on hero-sliding-panels but not on home-hero_section
-const heroArrow = document.querySelector('.hero-scroll-arrow');
-const heroSlidingPanels = document.getElementById('hero');
-const homeHeroSection = heroSlidingPanels.querySelector('.home-hero_section:first-child');
-
-let isScrolling = false;
-let scrollTimeout;
-
-function showArrow() {
-  if (heroArrow) heroArrow.style.opacity = '1';
-}
-
-function hideArrow() {
-  if (heroArrow) heroArrow.style.opacity = '0';
-}
-
-// Initial state - hide arrow
-hideArrow();
-
-// Show arrow only when scrolling within hero-sliding-panels and not on first panel
-ScrollTrigger.create({
-  trigger: heroSlidingPanels,
-  start: "top top",
-  end: "bottom bottom", 
-  onUpdate: (self) => {
-    // Show arrow only when scrolling between panels (not at the very beginning)
-    if (self.progress > 0.1 && self.progress < 0.9) {
-      showArrow();
-    } else {
-      hideArrow();
-    }
-  },
-  onLeave: () => hideArrow(),
-  onEnterBack: () => hideArrow()
-});
 </script>
   <script>
 // Change color Ideas Panel random
