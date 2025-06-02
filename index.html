@@ -1431,9 +1431,9 @@ a {
             </div>
           </div>
         </div>
-        <!-- Scroll Down Arrow - Common to all panels -->
-        <div class="hero-scroll-arrow" style="z-index: 999; position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); pointer-events: none;">
-          <dotlottie-wc src="https://lottie.host/1679f75c-dda7-401f-bdbc-4cd388235302/QORYHhRAVr.lottie" autoplay loop style="width: 60px; height: 60px; display: block;"></dotlottie-wc>
+        <!-- Scroll Down Arrow - Only visible on hero-sliding-panels -->
+        <div class="hero-scroll-arrow" style="z-index: 10000; position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); pointer-events: none;">
+          <dotlottie-wc src="https://lottie.host/1679f75c-dda7-401f-bdbc-4cd388235302/QORYHhRAVr.lottie" autoplay loop style="width: 600px; height: 600px; display: block;"></dotlottie-wc>
         </div>
       </div>
       <section id="otherID" data-w-id="d15cff1e-2568-7287-9094-205369b7db55" class="home-cta_section">
@@ -2171,7 +2171,12 @@ dotlottie-wc {
 }
 
 .hero-scroll-arrow {
-  z-index: 999 !important;
+  z-index: 10000 !important;
+}
+
+/* Only show the scroll arrow within hero-sliding-panels */
+.hero-sliding-panels {
+  position: relative;
 }
 </style>
   </div>
